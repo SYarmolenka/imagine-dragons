@@ -1,0 +1,10 @@
+{
+  "extends": ["@exeto/eslint-config/node", "prettier"],
+  "plugins": ["prettier", "import", "react", "jsx-a11y"],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}
