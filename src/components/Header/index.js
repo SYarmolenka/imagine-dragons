@@ -1,6 +1,5 @@
-import { withStyles } from '@material-ui/core';
-
 import Header from './component';
 import styles from './styles';
+import withStyles from '../../withStyles';
 
 export default withStyles(styles)(Header);

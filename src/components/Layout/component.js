@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
-import { MuiThemeProvider } from '@material-ui/core';
-import { SheetsRegistry } from 'react-jss'
+import { SheetsRegistry } from 'react-jss';
+import PageTransition from 'gatsby-plugin-page-transitions';
 
-import theme from '../../theme';
 import Header from '../Header';
 
 class Layout extends Component {
@@ -34,7 +33,6 @@ class Layout extends Component {
           render={data => {
             const sheets = new SheetsRegistry();
             return (
-            <MuiThemeProvider theme={theme}>
               <>
                 <Helmet
                   title={data.site.siteMetadata.title}
@@ -50,10 +48,22 @@ class Layout extends Component {
                   siteTitle={data.site.siteMetadata.title}
                 />
                 <div className={classes.root}>
-                  {children}
+                  <PageTransition
+                    defaultStyle={{
+                      transition: 'opacity 500ms cubic-bezier(0.47, 0, 0.75, 0.72)',
+                      opacity: 0,
+                    }}
+                    transitionStyles={{
+                      entering: { opacity: 1 },
+                      entered: { opacity: 1 },
+                      exiting: { opacity: 0 },
+                    }}
+                    transitionTime={500}
+                  >
+                    {children}
+                  </PageTransition>
                 </div>
               </>
-            </MuiThemeProvider>
           )}}
         />
     );

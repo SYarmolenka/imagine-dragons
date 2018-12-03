@@ -8,12 +8,11 @@ import MenuItem from './MenuItem';
 
 const Menu = ({ isOpenMenu, classes }) => (
   <Drawer
-    className={isOpenMenu ? classes.menuOpen : classes.menuClose}
     variant="permanent"
     anchor="left"
     open={isOpenMenu}
     classes={{
-      paper: classNames([classes.paper, isOpenMenu ? classes.menuOpen : classes.menuClose])
+      paper: classNames([classes.paper, isOpenMenu ? classes.menuOpen : classes.menuClose]),
     }}
   >
     <StaticQuery 
@@ -38,7 +37,7 @@ const Menu = ({ isOpenMenu, classes }) => (
             }
           }
         }
-        allContentfulImagineDragonsArtist {
+        allContentfulImagineDragonsArtist (sort: {fields: [ number ], order: ASC}) {
           edges {
             node {
               id
@@ -67,7 +66,7 @@ const Menu = ({ isOpenMenu, classes }) => (
             </Typography>
             <Divider className={classes.divider} />
             {data.allContentfulImagineDragonsAlboms.edges.map(({node}) => (
-              <MenuItem key={node.id} {...node} path="album" />
+              <MenuItem key={node.id} {...node} path="album"  />
             ))}
             <Typography align="center" className={classes.title}>
               Band

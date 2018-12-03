@@ -32,6 +32,12 @@ module.exports = {
         icon: 'src/images/icon.png',
       },
     },
+    {
+      resolve: 'gatsby-plugin-page-transitions',
+      options: {
+        transitionTime: 225
+      }
+    }
   ],
   pathPrefix: "/imagine-dragons",
 }

@@ -1,13 +1,20 @@
-import backgroundImage from '../../images/backgroundRoot.jpg';
-
 export default {
+  '@global': {
+    html: {
+      minWidth: 900,
+    },
+
+    body: {
+      margin: 0,
+      height: '100%',
+      minWidth: 900,
+      background: '#bdc3c7',
+      background: '-webkit-linear-gradient(to left, #bdc3c7, #2c3e50)',
+      background: 'linear-gradient(to left, #bdc3c7, #2c3e50)',
+    }
+  },
+
   root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: [[64, 0, 0, 72]],
-    background: `url(${backgroundImage}) no-repeat`,
-    backgroundSize: 'cover',
-    height: `calc(100vh - 64px)`,
+    margin: [[64, 0, 0, 95]],
   }
 };

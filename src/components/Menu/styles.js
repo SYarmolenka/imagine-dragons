@@ -1,10 +1,4 @@
 export default ({ spacing }) => ({
-  '@global': {
-    body: {
-      margin: 0,
-    }
-  },
-
   menuOpen: {
     width: spacing.unit * 45,
     transition: [
