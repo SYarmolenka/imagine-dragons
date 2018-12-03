@@ -38,7 +38,6 @@ const YouTube = ({ videoId, title, reverse, classes }) => (
       </Typography>
     </Grid>
   </Grid>
-  
 );
 
 export default YouTube;

@@ -40,7 +40,7 @@ export const queryPage = graphql`
     allImageSharp (filter: {fixed: {originalName: {in: "backgroundRoot.jpg"}}}) {
       edges {
         node {
-          fluid (maxHeight: 1200) {
+          fluid (maxHeight: 2160) {
             base64
             tracedSVG
             aspectRatio

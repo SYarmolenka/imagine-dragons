@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 import { SheetsRegistry } from 'react-jss';
-import PageTransition from 'gatsby-plugin-page-transitions';
 
 import Header from '../Header';
+import Transition from '../Transition';
 
 class Layout extends Component {
   state = {
@@ -48,7 +48,7 @@ class Layout extends Component {
                   siteTitle={data.site.siteMetadata.title}
                 />
                 <div className={classes.root}>
-                  <PageTransition
+                  <Transition
                     defaultStyle={{
                       transition: 'opacity 500ms cubic-bezier(0.47, 0, 0.75, 0.72)',
                       opacity: 0,
@@ -61,7 +61,7 @@ class Layout extends Component {
                     transitionTime={500}
                   >
                     {children}
-                  </PageTransition>
+                  </Transition>
                 </div>
               </>
           )}}

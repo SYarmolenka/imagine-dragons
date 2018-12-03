@@ -3,8 +3,9 @@ export default ({ spacing }) => ({
     maxWidth: spacing.unit * 120,
     background: '#262626',
     padding: [[0, spacing.unit * 2]],
-    marginBottom: spacing.unit * 2,
+    margin: [[0, spacing.unit, spacing.unit * 2, spacing.unit]],
   },
+  
   video: {
     zIndex: 10,
   },
