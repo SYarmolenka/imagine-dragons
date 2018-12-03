@@ -39,4 +39,4 @@ const withStyles = styles => WrapperComponent => {
   return WithStyles;
 }
 
-export default withStyles;
+export default muiWithStyles;

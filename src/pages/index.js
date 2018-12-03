@@ -10,7 +10,7 @@ const IndexPage = ({ data }) => (
   <Layout>
     <Grid container justify="center" style={{marginTop: 80}}>
       <Img
-        fluid={data.allImageSharp.edges[0].node.fluid}
+        fluid={data.file.childImageSharp.fluid}
         style={{width: 'calc(100vw - 200px)', marginBottom: '40px'}}
       />
       {data.allContentfulImagineDragonsClip.edges.map(({ node }, index) => {
@@ -37,24 +37,22 @@ export const queryPage = graphql`
         }
       }
     }
-    allImageSharp (filter: {fixed: {originalName: {in: "backgroundRoot.jpg"}}}) {
-      edges {
-        node {
-          fluid (maxHeight: 2160) {
-            base64
-            tracedSVG
-            aspectRatio
-            src
-            srcSet
-            srcWebp
-            srcSetWebp
-            sizes
-            originalImg
-            originalName
-            presentationWidth
-            presentationHeight
-          }
-        }
+    file (relativePath: { eq: "backgroundRoot.jpg" }) {
+      childImageSharp {
+        fluid (maxHeight: 2160) {
+          base64
+          tracedSVG
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
+          presentationWidth
+          presentationHeight
+        } 
       }
     }
   }

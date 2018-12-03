@@ -17,7 +17,8 @@ const AboutPage = ({ data, classes }) => (
   <Layout>
     <div className={classes.container}>
       <a href="https://github.com/SYarmolenka/imagine-dragons/tree/master">
-        <Img fixed={data.allImageSharp.edges[0].node.fixed} />
+        <img src={data.file.childImageSharp.fixed.src}/>
+        {/* <Img fixed={data.file.childImageSharp.fixed} /> */}
       </a>
     </div>
   </Layout>
@@ -25,24 +26,22 @@ const AboutPage = ({ data, classes }) => (
 
 export const queryPage = graphql`
   query gitHubLogo {
-    allImageSharp (filter: {fixed: {originalName: {in: "github-logo.png"}}}) {
-      edges {
-        node {
-          fixed (height: 200) {
-            base64
-            tracedSVG
-            aspectRatio
-            width
-            height
-            src
-            srcSet
-            srcWebp
-            srcSetWebp
-            originalName
-          } 
-        }
+    file (relativePath: { eq: "github-logo.png" }) {
+    childImageSharp {
+      fixed(height: 200) {
+        base64
+        tracedSVG
+        aspectRatio
+        width
+        height
+        src
+        srcSet
+        srcWebp
+        srcSetWebp
+        originalName
       }
     }
+  }
   }
 `;
 

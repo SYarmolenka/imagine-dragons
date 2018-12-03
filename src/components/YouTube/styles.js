@@ -5,15 +5,11 @@ export default ({ spacing }) => ({
     padding: [[0, spacing.unit * 2]],
     margin: [[0, spacing.unit, spacing.unit * 2, spacing.unit]],
   },
-  
+
   video: {
     zIndex: 10,
-  },
-
-  videoOpts: {
     height: 390,
     width: 640,
-    
   },
 
   videoContainer: {
@@ -23,6 +19,7 @@ export default ({ spacing }) => ({
     alignItems: 'center',
     height: 390,
     width: 640,
+    margin: [[spacing.unit * 2, 0]],
   },
 
   spinner: {

@@ -1,21 +1,20 @@
 const { JssProvider } = require("react-jss");
 const { renderToString } = require("react-dom/server");
 const React = require('react');
+const { MuiThemeProvider } = require('@material-ui/core/styles');
 
 const getPageContext = require("./src/getPageContext").default;
+const Layout = require('./src/components/Layout').default;
 
 exports.replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadComponents }) => {
-  const pageContext = getPageContext();
+  const { theme, sheetsManager, sheetsRegistry, generateClassName } = getPageContext();
 
   replaceBodyHTMLString(
     renderToString(
-      <JssProvider
-        registry={pageContext.sheetsRegistry}
-        generateClassName={pageContext.generateClassName}
-      >
-        {React.cloneElement(bodyComponent, {
-          pageContext
-        })}
+      <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
+        <MuiThemeProvider theme={theme} sheetsManager={sheetsManager}>
+          {bodyComponent}
+        </MuiThemeProvider>
       </JssProvider>
     )
   );
@@ -23,13 +22,9 @@ exports.replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadCompon
   setHeadComponents([
     <style
       type="text/css"
-      id="server-side-jss"
-      key="server-side-jss"
-      dangerouslySetInnerHTML={{ __html: pageContext.sheetsRegistry.toString() }}
+      id="jss-server-side"
+      key="jss-server-side"
+      dangerouslySetInnerHTML={{ __html: sheetsRegistry.toString() }}
     />
   ]);
-};
-
-exports.onRenderBody = ({ setHeadComponents }) => {
-  return setHeadComponents([]);
 };

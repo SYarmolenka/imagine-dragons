@@ -15,9 +15,11 @@ const YouTube = ({ videoId, title, reverse, classes }) => (
       <div className={classes.videoContainer}>
         <div className={classes.video}>
           <YT
-            className={classes.video}
             videoId={videoId}
-            opts={classes.videoOpts}
+            opts={{
+              height: 390,
+              width: 640,
+            }}
           />
         </div>
         <CircularProgress

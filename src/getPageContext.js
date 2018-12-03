@@ -12,14 +12,16 @@ function createPageContext() {
   };
 }
 
-export default function getPageContext() {
-  if (!process.browser) {
-    return createPageContext();
-  }
+// export default function getPageContext() {
+//   if (!process.browser) {
+//     return createPageContext();
+//   }
 
-  if (!global.__INIT_MATERIAL_UI__) {
-    global.__INIT_MATERIAL_UI__ = createPageContext();
-  }
+//   if (!global.__INIT_MATERIAL_UI__) {
+//     global.__INIT_MATERIAL_UI__ = createPageContext();
+//   }
 
-  return global.__INIT_MATERIAL_UI__;
-}
+//   return global.__INIT_MATERIAL_UI__;
+// }
+
+export default createPageContext;
